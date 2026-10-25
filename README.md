@@ -1,50 +1,34 @@
-# research-solutions
+# Solution Research
 
-A goal-first research skill for coding agents. Audit constraints, inspect mature implementations, compare alternatives, seek counterexamples, and verify real workflows.
+[中文说明](README.zh-CN.md)
 
-一个从真实目标出发的方案研究 skill：升维理解目标 → 必要时确认 → 探索方案 → 选择路径 → 验证结果。
+An agent skill for open-ended research and solution selection. It separates objectives from assumptions, searches across domains, and compares candidates against the user's actual constraints.
 
-## Install / 安装
+The English [SKILL.md](SKILL.md) is the installable skill. The [Chinese README](README.zh-CN.md#完整中文翻译) includes its complete Chinese translation.
 
-Copy `SKILL.md` into your agent's `skills/research-solutions/` directory. For Codex, the default user location is `~/.codex/skills/research-solutions/SKILL.md`. Keep existing customizations before replacing an installed copy.
+## Install
 
-The skill is written in Chinese. It is self-contained; Retro is optional and used only when available and appropriate.
+Copy `SKILL.md` into your agent's `skills/solution-research/` directory.
 
-## Use / 使用
+For Codex, use `~/.codex/skills/solution-research/SKILL.md`. If you installed an earlier version as `research-solutions`, replace that installation with `solution-research` to avoid duplicate skills.
 
-Invoke `$research-solutions` with a problem, desired outcome, and any non-negotiable constraints.
+## Use
 
-> $research-solutions 我想用向量数据库做文档检索。请先确认真实目标和必要约束，检查现有实现，再比较方案并验证。
+Invoke `$solution-research` with your question and any known constraints. Agents that support automatic skill discovery can also select it for relevant requests.
 
-It can also be selected automatically by agents that support skill discovery. Use it for open-ended solution research, route comparisons, or reassessing a failed approach. Routine execution and simple fact lookups do not need the full workflow.
+## Workflow
 
-## What it changes / 行为
+1. Analyze the problem and confirm boundaries.
+2. Abstract the need and research across domains.
+3. Apply the constraints and narrow the options.
+4. Deliver a decision recommendation.
 
-- Distinguishes hard constraints, preferences, proposed means, and inherited assumptions.
-- Asks before widening the solution space when the user's intended boundary is unclear.
-- Checks the existing project and original implementation before building.
-- Compares adoption, reuse, extension, composition, and custom development.
-- Defines evidence that could overturn the preferred route.
-- Separates theoretical support, implementation evidence, and observed execution.
-- Captures lessons at meaningful milestones without treating retrospective suggestions as permission.
+The skill applies to implementation ideas, technical and architecture comparisons, alternatives, and potentially better approaches to an initial proposal. It excludes simple factual questions, error fixes, and routine execution with settled requirements and a settled approach.
 
-## Review cases / 检查场景
+## Acknowledgments
 
-| Request | Expected behavior |
-| --- | --- |
-| “必须使用 SQLite，离线运行。” | Keep SQLite and offline operation as hard constraints. |
-| “我想用向量数据库，但只需要快速查到合同条款。” | Clarify whether the database is required before dependent route selection. |
-| “原项目似乎已经支持这个功能。” | Inspect the implementation, examples, and tests before rebuilding. |
-| “补丁加了很多，指标仍不达标。” | Test the failing assumption and reconsider the route. |
-| “论文说可行，但这里无法运行。” | Report the evidence gap; do not claim local usability. |
-| “只修复已确定方案中的一个拼写错误。” | Perform the small edit directly. |
-
-These are manual review scenarios, not a claim of measured model performance.
-
-## Acknowledgments / 致谢
-
-The concise steps, conditional references, and emphasis on improving the agent's environment are inspired by Matt Pocock's [skills](https://github.com/mattpocock/skills), particularly the locally available Retro and writing-for-agents workflows. This is an independent skill, not an official Matt Pocock project.
+The writing approach was inspired by Matt Pocock's [skills](https://github.com/mattpocock/skills), including Retro and writing-for-agents. This is an independent project.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+[MIT](LICENSE).

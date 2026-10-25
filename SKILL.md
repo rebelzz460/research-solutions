@@ -1,30 +1,26 @@
 ---
-name: research-solutions
-description: 研究解决方法、比较方案或重新评估既有路线时使用。先理解真实目标，再跨领域寻找已有解法，按证据和实际条件推荐路径。
+name: solution-research
+description: Use for open-ended problem exploration, technical research, architecture comparisons, and solution selection. Trigger when the user seeks implementation ideas, compares technical approaches, looks for alternatives, or proposes an initial idea that may have a better solution. Do not trigger for simple factual questions, error fixes, or routine execution when both the requirements and approach are fully settled.
 ---
 
-用户希望找到**更合适的解法**。你的工作是理解目标、调查已有方法，并给出有依据的建议。
+# Solution Research
 
-## 步骤
+Help the user research and select solutions through the following four stages. Do not treat the technical approach the user initially names as the only option.
 
-1. **理解问题。** 阅读相关背景和可访问的既有决策，弄清用户想实现什么、怎样算成功。区分必须满足的条件、偏好和提出的手段；不确定是否应跳出原方案且会影响结论时，先向用户确认。
+## Steps
 
-2. **调查已有解法。** 从功能和机制出发检索，寻找原方案之外及相邻领域的成熟方法。阅读有希望路线的原始资料；涉及软件时，检查现有工具和原项目源码，再判断需要补什么。
+1. **Analyze the problem and confirm boundaries**
+   - Separate the **real objective**, **hard constraints** (environment, cost, and minimum compatibility requirements), and **adjustable assumptions** (implementation choices the user mentions in passing).
+   - **Confirmation gate:** If missing key constraints would send the research in fundamentally different directions, do a minimal preliminary investigation, identify 2–3 concrete decision points, and ask the user to clarify. **Pause any lengthy comparison** until then. If the context is sufficient to narrow the scope, proceed directly to the next stage.
 
-3. **比较路径。** 回到用户的实际条件，比较采用、扩展、迁移、组合或自研的效果、证据和总成本。主动寻找首选方案的反例；关键假设不成立时，重新考虑目标和候选。
+2. **Abstract the need and research across domains**
+   - Remove unnecessary restrictions and restate the problem as “core needs + required capabilities.” Research the host's native capabilities, mature open-source implementations, established patterns, and alternatives from other domains in parallel.
+   - **Evidence and counterexamples:** Actively research failures, limitations, and maintenance pitfalls for each direction. Use primary sources (documentation, source code, and recorded test results) to distinguish verified facts from inference. Do not judge quality by popularity or novelty.
 
-4. **给出建议。** 说明推荐什么、为什么、依据是什么、还有哪些未知。需要进一步验证时给出验证计划。默认到方案调查为止；实际安装、部署和运行需用户明确要求。
+3. **Apply the constraints and narrow the options**
+   - Evaluate candidates against the user's actual constraints. Prioritize how effectively they solve the problem, then compare maturity, cost, complexity, and maintenance risk.
+   - **Default selection ladder:** Strictly screen in this order: “reuse built-in capabilities or existing configuration → adopt a mature open-source implementation → combine or adapt components with lightweight changes → develop a custom solution.” Move to the next level only when the preceding one cannot meet a key requirement.
 
-## 参考
-
-### 检索范围
-
-命名产品可以是使用场景、对标对象或候选手段，不自动限定实现来源。即使最终环境必须保留，也可以从其他产品、领域或机制寻找可复用的解法。
-
-### 证据
-
-区分理论支持、实现证据和运行证据。已有源码或测试不代表实际可用，他人的运行结果也不代表用户环境已验证。结论保留来源和适用条件，证据不足时说明未知。
-
-### 深度与复盘
-
-按决策的重要性安排调查，证据足够后收束。重大阶段或重复失误通过可用的 Retro 流程复盘，提炼能改善判断的经验；通用 skill 保留方法，具体经验放在项目文档，由 AGENTS.md 按需指向。
+4. **Deliver a decision recommendation**
+   - Present only the most valuable candidates. For each, explain its main strengths and weaknesses, suitable conditions and key limitations, recommendation rationale, and supporting evidence.
+   - Give a clear first choice while preserving the user's final decision.
